@@ -1,5 +1,5 @@
 <input type="text" #todo />
-<button (click)="addTodo(todo.value)">add todo</button>
+<button (click)="addTodo(todo)">add todo</button>
 
 <app-todo-item
   *ngFor="let item of todos"

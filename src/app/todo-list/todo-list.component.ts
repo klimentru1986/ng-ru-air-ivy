@@ -10,7 +10,6 @@ import { ɵmarkDirty as markDirty } from '@angular/core';
   styleUrls: ['./todo-list.component.css']
 })
 export class TodoListComponent implements OnInit, OnDestroy {
-  todoInput = '';
   todos: ToDo[];
 
   private subscription = new Subscription();
@@ -29,16 +28,17 @@ export class TodoListComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
-  addTodo(todo: string) {
-    if (!todo) {
+  addTodo(todo: HTMLInputElement) {
+    if (!todo.value) {
       return;
     }
 
     this.todoService.addTodo({
       id: Math.floor(Math.random() * 1000),
-      description: todo
+      description: todo.value
     });
 
+    todo.value = '';
     markDirty(this);
   }
 

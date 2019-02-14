@@ -13,8 +13,7 @@ import { TodoListComponent } from './todo-list/todo-list.component';
       TodoListComponent
    ],
    imports: [
-      CommonModule,
-      FormsModule
+      CommonModule
    ]
 })
 export class AppModule {}
