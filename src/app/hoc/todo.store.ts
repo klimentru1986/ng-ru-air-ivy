@@ -6,8 +6,8 @@ export function TodoStore() {
   return (clazz: any) => {
     const originalFactory = clazz.ngComponentDef.factory;
     const subscription = new Subscription();
-
     const init = clazz.ngComponentDef.onInit;
+    const destroy = clazz.ngComponentDef.onDestroy;
 
     clazz.ngComponentDef.onInit = () => {
       if (init) {
@@ -17,6 +17,10 @@ export function TodoStore() {
     };
 
     clazz.ngComponentDef.onDestroy = () => {
+      if (destroy) {
+        destroy();
+      }
+
       subscription.unsubscribe();
     };
 
