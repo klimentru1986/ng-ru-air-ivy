@@ -13,8 +13,6 @@ import {
 export class AppComponent {
   @ViewChild('container') lazyContainer: ElementRef;
 
-  constructor() {}
-
   getLazy() {
     import('lazy-lib').then(({ LazyLibComponent }) => {
       console.log(LazyLibComponent.ngComponentDef);
