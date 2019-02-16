@@ -1,6 +1,4 @@
-import {
-  Component, ComponentFactoryResolver
-} from '@angular/core';
+import { Component, ɵrenderComponent as renderComponent } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -11,10 +9,8 @@ export class AppComponent {
   constructor() {}
 
   getLazy() {
-    const module = import('lazy-lib').then(({ LazyLibComponent }) => {
-      console.log(LazyLibComponent);
-
+    import('lazy-lib').then(({ LazyLibComponent }) => {
+      renderComponent(LazyLibComponent);
     });
-    console.log(module);
   }
 }
